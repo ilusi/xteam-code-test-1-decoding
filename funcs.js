@@ -7,7 +7,7 @@ var path = require('path')
  * (string): string
  */
 function encode (data) {
-  return (new Buffer(data)).toString('base64')
+  return Buffer.from(data).toString('base64')
 }
 
 /**
@@ -16,7 +16,7 @@ function encode (data) {
  * (string): string
  */
 function decode (data) {
-  return (new Buffer('' + data, 'base64')).toString()
+  return Buffer.from(data, 'base64').toString()
 }
 
 /**
@@ -86,5 +86,5 @@ module.exports.findNextMessage = function (inbox, lastHash) {
 
   // read and decode the message
   return 'from: ' + decode(inbox.messages[found].from) + '\n---\n' +
-    decode(fs.readFile(path.join(inbox.dir, inbox.messages[found].hash), 'utf8'))
+    decode(fs.readFileSync(path.join(inbox.dir, inbox.messages[found].hash), 'utf8'))
 }

@@ -21,11 +21,11 @@ funcs.loadDb(dbFile, function (err, db) {
 
     // 2. encode the name
     var encoded = encodeName(session.username)
-console.log('encoded', encoded)
+// console.log('encoded', encoded)
 
   // 3. find the user's inbox
   var inbox = funcs.findInbox(db, encoded)
-console.log('inbox', inbox)
+// console.log('inbox', inbox)
 
   // 4. find the next message
   var nextMessage = funcs.findNextMessage(inbox, session.lastMessageHash)
